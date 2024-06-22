@@ -9,6 +9,8 @@ export interface MealItemProps {
   image: string;
   summary: string;
   creator: string;
+  instructions: string;
+  creator_email: string;
 }
 
 const MealItem = ({ title, slug, image, summary, creator }: MealItemProps) => {
