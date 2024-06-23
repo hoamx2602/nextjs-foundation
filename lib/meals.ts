@@ -50,4 +50,5 @@ export async function saveMeal(meal: any) {
     )
   `
 	).run(meal);
+	await new Promise((resolve) => setTimeout(resolve, 2000));
 }
