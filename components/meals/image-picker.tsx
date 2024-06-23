@@ -9,9 +9,7 @@ interface ImagePickerProps {
 }
 
 const ImagePicker = ({ label, name }: ImagePickerProps) => {
-  const [pickedImage, setPickedImage] = useState<string | null>(
-    null
-  );
+  const [pickedImage, setPickedImage] = useState<any>(null);
   const imageInput = useRef<HTMLInputElement>(null);
 
   function handlePickClick() {
@@ -30,7 +28,7 @@ const ImagePicker = ({ label, name }: ImagePickerProps) => {
     const fileReader = new FileReader();
 
     fileReader.onload = () => {
-      setPickedImage(fileReader.result as string);
+      setPickedImage(fileReader.result as any);
     };
     fileReader.readAsDataURL(file);
   }

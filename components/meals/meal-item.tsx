@@ -6,7 +6,7 @@ export interface MealItemProps {
   id: string;
   title: string;
   slug: string;
-  image: string;
+  image: any;
   summary: string;
   creator: string;
   instructions: string;

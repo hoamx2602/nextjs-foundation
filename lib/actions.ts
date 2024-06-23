@@ -1,16 +1,18 @@
 'use server'
 
-export async function shareMeal(formData: FormData) {
-    "use server";
+import { redirect } from "next/navigation";
+import { saveMeal } from "./meals";
 
+export async function shareMeal(formData: FormData) {
     const meal = {
       title: formData.get("title"),
       summary: formData.get("summary"),
       instructions: formData.get("instructions"),
-      image: formData.get("image"),
+      image: formData.get("image") as any,
       creator: formData.get("name"),
       creator_email: formData.get("email"),
     };
 
-    console.log("🟢====>meal", meal);
+    await saveMeal(meal);
+	redirect('/meals');
   }
