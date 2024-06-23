@@ -3,13 +3,26 @@ import classes from "./page.module.css";
 import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
 
-const MealDetailsPage = async ({
-  params,
-}: {
+interface MealDetailsPageProps {
   params: {
     mealSlug: string;
   };
-}) => {
+}
+
+export async function generateMetadata({ params }: MealDetailsPageProps) {
+  const meal = await getMeal(params.mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
+  
+  return {
+    title: meal.title,
+    description: meal.summary
+  };
+}
+
+const MealDetailsPage = async ({ params }: MealDetailsPageProps) => {
   const meal = await getMeal(params.mealSlug);
 
   if (!meal) {
